@@ -24,15 +24,22 @@ class SmurfForm extends Component {
     })
     .then(res => {
       console.log('congratulation', res);
+      // update smurfs list
       this.setState((state, prop) => {
         prop.onSubmit(res.data)
       })
     }).then(() => {
+      // reset form on success
       this.setState({
         name: '',
         age: '',
         height: ''
       });
+
+      //back to home page
+
+      
+      this.props.history.push('/');
     })
     .catch(err => {
       console.log('no new smurf for you', err);
